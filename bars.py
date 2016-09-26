@@ -37,8 +37,8 @@ def get_closest_bar(data, lon1, lat1):
     	distance_cur = distance(lon1, lat1, i['Cells']['geoData']['coordinates'][0], i['Cells']['geoData']['coordinates'][1])
     	if distance_min > distance_cur:
     		distance_min = distance_cur
-    		print(distance_min)
-    		print(i['Cells']['Name'])
+    		#print(distance_min)
+    		#print(i['Cells']['Name'])
     		cl = i
     return cl    
 
