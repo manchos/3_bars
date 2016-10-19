@@ -13,21 +13,11 @@ def load_data(filepath):
 
 def get_biggest_bar(bars):
     """Return the biggest bar from the list of bars."""
-    # big_bar = bars[0]
-    # for bar in bars:
-    #     if bar['Cells']['SeatsCount'] > big_bar['Cells']['SeatsCount']:
-    #         big_bar = bar
-    # return big_bar['Cells']['Name']
     return max(bars, key=lambda x: x['Cells']['SeatsCount'])['Cells']['Name']
 
 
 def get_smallest_bar(bars):
     """Return the smallest bar from the list of bars."""
-    # small_bar = bars[0]
-    # for bar in bars:
-    #     if bar['Cells']['SeatsCount'] < small_bar['Cells']['SeatsCount']:
-    #         small_bar = bar
-    # return small_bar['Cells']['Name']
     return min(bars, key=lambda x: x['Cells']['SeatsCount'])['Cells']['Name']
 
 
@@ -43,7 +33,6 @@ def get_closest_bar(data, lon1, lat1):
             distance_min = distance_cur
             closest_bar = bar
     return closest_bar['Cells']['Name']
-
 
 
 def distance(lon1, lat1, lon2, lat2):
