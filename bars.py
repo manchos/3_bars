@@ -54,4 +54,4 @@ if __name__ == '__main__':
     lon1 = float(input('Enter the longitude:'))
     lat1 = float(input('Enter the latitude:'))
     # 37.439787, 55.85051  # metro station Skhodnenskaya
-    print('the name of the closest bar near the longtitude: %f  latitude: %f: \n %s' % (lon1, lat1, get_closest_bar(bars, lon1, lat1)))
+    print('the name of the closest bar near the longtitude: %f  latitude: %f: \n %s' % (lon1, lat1, get_closest_bar_name(bars, lon1, lat1)))
