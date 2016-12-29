@@ -1,7 +1,6 @@
+from math import sin, cos, sqrt, atan2, radians
 import json
 import os
-from math import sin, cos, sqrt, atan2, radians
-
 
 def load_data(filepath):
     """Return the dictionary of bars."""
@@ -23,25 +22,8 @@ def get_smallest_bar_name(bars):
 
 def get_closest_bar_name(data, lon1, lat1):
     """Return the name of the closest bar from the list of bars given the GPS coordinates."""
-    closest_bar = data[0]
-    distance_min = distance(lon1, lat1, closest_bar['Cells']['geoData']['coordinates'][0],
-                            closest_bar['Cells']['geoData']['coordinates'][1])
-    for bar in data:
-        distance_cur = distance(lon1, lat1, bar['Cells']['geoData']['coordinates'][0],
-                                bar['Cells']['geoData']['coordinates'][1])
-        if distance_min > distance_cur:
-            distance_min = distance_cur
-            closest_bar = bar
-    return closest_bar['Cells']['Name']
+    return min(data, key=lambda x: 6373.0 * 2 * atan2(sqrt(sin((x['Cells']['geoData']['coordinates'][1] - lat1) / 2) ** 2 + cos(lat1) * cos(x['Cells']['geoData']['coordinates'][1]) * sin((x['Cells']['geoData']['coordinates'][0]- lon1) / 2) ** 2), sqrt(1 - sin((x['Cells']['geoData']['coordinates'][1] - lat1)/ 2) ** 2 + cos(lat1) * cos(x['Cells']['geoData']['coordinates'][1]) * sin((x['Cells']['geoData']['coordinates'][0] - lon1) / 2) ** 2)))['Cells']['Name']
 
-
-def distance(lon1, lat1, lon2, lat2):
-    """Return the distance between the points"""
-    earth_radius = 6373.0
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
-    return earth_radius * 2 * atan2(sqrt(a), sqrt(1 - a))
 
 
 if __name__ == '__main__':
