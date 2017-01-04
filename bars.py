@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from math import sin, cos, sqrt, atan2, radians
+from math import sin, cos, sqrt, atan2
 import json
 import os
 
