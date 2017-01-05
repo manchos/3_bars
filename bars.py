@@ -3,8 +3,8 @@ import json
 import os
 
 
-def load_data(filepath):
-    """Return the dictionary of bars."""
+def load_json_data(filepath):
+    #Return the dictionary of bars
     if not os.path.exists(filepath):
         return None
     with open(filepath, encoding='utf8') as file_handler:
@@ -12,17 +12,15 @@ def load_data(filepath):
 
 
 def get_biggest_bar_name(bars):
-    """Return the name of the biggest bar from the list of bars."""
     return max(bars, key=lambda x: x['SeatsCount'])['Name']
 
 
 def get_smallest_bar_name(bars):
-    """Return the name of the smallest bar from the list of bars."""
     return min(bars, key=lambda x: x['SeatsCount'])['Name']
 
 
 def get_closest_bar_name(data, lon1, lat1):
-    """Return the name of the closest bar from the list of bars given the GPS coordinates."""
+    # lon1 and lat1 - GPS coordinates
     return \
         min(data,
             key=lambda x: distance(lon1, lat1, x['geoData']['coordinates'][0], x['geoData']['coordinates'][1]))['Name']
