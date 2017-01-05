@@ -4,7 +4,7 @@ import os
 
 
 def load_json_data(filepath):
-    #Return the dictionary of bars
+    # Return the dictionary of bars
     if not os.path.exists(filepath):
         return None
     with open(filepath, encoding='utf8') as file_handler:
