@@ -36,7 +36,7 @@ def distance(lon1, lat1, lon2, lat2):
 
 if __name__ == '__main__':
     filepath = input('Enter the real path to json file with list of bars:')
-    bars = load_data(filepath)
+    bars = load_json_data(filepath)
     print('----------------------------------------------------')
     print('The name of the biggest bar: %s' % get_biggest_bar_name(bars))
     print('The smallest bar: %s' % get_smallest_bar_name(bars))
