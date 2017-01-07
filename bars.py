@@ -4,7 +4,6 @@ import os
 
 
 def load_json_data(filepath):
-    # Return the dictionary of bars
     if not os.path.exists(filepath):
         return None
     with open(filepath, encoding='utf8') as file_handler:
@@ -19,8 +18,7 @@ def get_smallest_bar_name(bars):
     return min(bars, key=lambda x: x['SeatsCount'])['Name']
 
 
-def get_closest_bar_name(data, lon1, lat1):
-    # lon1 and lat1 - GPS coordinates
+def get_closest_bar_name_byGPScoordinates(data, lon1, lat1):
     return \
         min(data,
             key=lambda x: distance(lon1, lat1, x['geoData']['coordinates'][0], x['geoData']['coordinates'][1]))['Name']
@@ -45,4 +43,4 @@ if __name__ == '__main__':
     lat1 = float(input('Enter the latitude:'))
     # 37.439787, 55.85051  # metro station Skhodnenskaya
     print('the name of the closest bar near the longtitude:' +
-          '%f  latitude: %f: \n %s' % (lon1, lat1, get_closest_bar_name(bars, lon1, lat1)))
+          '%f  latitude: %f: \n %s' % (lon1, lat1, get_closest_bar_name_byGPScoordinates(bars, lon1, lat1)))
