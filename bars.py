@@ -18,7 +18,7 @@ def get_smallest_bar_name(bars):
     return min(bars, key=lambda x: x['SeatsCount'])['Name']
 
 
-def get_closest_bar_name_by_GPS_coordinates(data, lon1, lat1):
+def get_closest_bar_name_by_gps_coordinates(data, lon1, lat1):
     return \
         min(data,
             key=lambda x: distance(lon1, lat1, x['geoData']['coordinates'][0], x['geoData']['coordinates'][1]))['Name']
@@ -43,4 +43,4 @@ if __name__ == '__main__':
     lat1 = float(input('Enter the latitude:'))
     # 37.439787, 55.85051  # metro station Skhodnenskaya
     print('the name of the closest bar near the longtitude:' +
-          '%f  latitude: %f: \n %s' % (lon1, lat1, get_closest_bar_name_by_GPS_coordinates(bars, lon1, lat1)))
+          '%f  latitude: %f: \n %s' % (lon1, lat1, get_closest_bar_name_by_gps_coordinates(bars, lon1, lat1)))
